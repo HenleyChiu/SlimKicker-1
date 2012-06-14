@@ -26,5 +26,5 @@
 	 <color name="dark_black">#1A1A1A</color>
 	 <color name="orange">#FF8800</color>
 	 <color name="white">#FFFFFF</color>
-	 
+	 <color name="foodSelectedColor">#1E8FEB</color>
 </resources>

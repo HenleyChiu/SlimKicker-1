@@ -3,6 +3,8 @@ package com.proj.layout;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.joelapenna.foursquared.R;
+import com.markupartist.android.widget.ActionBar;
 import com.proj.food.AcknowledgeModel;
 import com.proj.food.Food;
 import com.proj.food.FoodIngredient;
@@ -10,11 +12,13 @@ import com.proj.service.DefaultProgressController;
 import com.proj.service.FoodAddService;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,11 +41,29 @@ public class FoodDetailAcitvity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+
 		setContentView(R.layout.food_desc_row);
+		
+		ActionBar actionBar = (ActionBar) findViewById(R.id.detailed_actionbar);
+		actionBar.setHomeLogo(R.drawable.home_logo);
+		
 		foodAddService = new FoodAddService();
 		Log.i(LOG_TAG, "creating food detail activity");
 		dialog = new DefaultProgressController(this);
 		displayDescription();
+	}
+	
+	private void setFonts() {
+		Typeface font = Typeface.createFromAsset(getAssets(), "arial_bold.ttf");
+		
+		int[] labels = {R.id.textView1, R.id.textView2, R.id.textView3, R.id.mealTitle};
+
+		//set font to Arial for all text labels
+		for(int label: labels){
+			TextView textLabel = (TextView) findViewById(label);
+			textLabel.setTypeface(font);
+		}
 	}
 
 	private void displayDescription() {
@@ -58,10 +80,11 @@ public class FoodDetailAcitvity extends Activity {
 				Log.i(LOG_TAG, e.getMessage());
 			}
 		}
-		TextView food_name = (TextView) findViewById(R.id.textView3);
-		food_name.setText(foodSelected.getFood_description());
-		Log.i(LOG_TAG, "adapter setted for foodListView");
+		
+		setFonts();
 
+		
+		Log.i(LOG_TAG, "adapter setted for foodListView");
 	}
 
 	private void createView(Food food) {

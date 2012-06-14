@@ -133,7 +133,7 @@ android:paddingLeft="4dip"
     android:layout_height="fill_parent" 
     >
         
-        <ListView 
+        <ListView
         android:layout_height="wrap_content" 
         android:id="@+id/food" 
         android:layout_width="match_parent">

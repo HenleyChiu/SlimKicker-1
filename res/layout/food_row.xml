@@ -7,7 +7,7 @@
   android:paddingTop="4dip"
   android:paddingBottom="4dip"
   android:paddingLeft="6dip"
-  android:background="@layout/food_border"  >
+  android:background="@drawable/food_selector"  >
   
     <TextView android:text="TextView"
      android:layout_height="wrap_content" 
